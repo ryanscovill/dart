@@ -1,12 +1,11 @@
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {BlazeLayout} from 'meteor/kadira:blaze-layout'
 
-FlowRouter.route( '/terms', {
+FlowRouter.route( '/', {
     action: function() {
-        // Do whatever we need to do when we visit http://app.com/terms.
-        console.log( "Okay, we're on the Terms of Service page!" );
+       BlazeLayout.render('applicationLayout', {main: 'mainPlay'});
     },
-    name: 'termsOfService' // Optional route name.
+    name: 'mainPlay'
 });
 
 let admin = FlowRouter.group({

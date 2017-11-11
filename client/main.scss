@@ -1,0 +1,10 @@
+@import "{}/node_modules/bootstrap/scss/bootstrap.scss";
+
+.custom-checkbox.scoring {
+  min-height: 5rem;
+  padding-left: 5rem;
+  .custom-control-indicator {
+    width: 5rem;
+    height: 5rem;
+  }
+}

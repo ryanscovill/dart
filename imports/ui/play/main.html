@@ -1,0 +1,102 @@
+<template name="mainPlay">
+    <div class="container-fluid">
+    {{#if isStartStage}}
+    <select name="playerSelect" class="custom-select">
+        <option value="" disabled selected>Choose your option</option>
+        {{#each team in teams}}
+            <option value="{{player._id}}">{{team.name}}</option>
+        {{/each}}
+    </select>
+    <button class="select-team btn btn-primary">Go</button>
+    {{/if}}
+    {{#if isRoundWaiting}}
+        {{#if hasLastRound}}
+        Finished Round #{{finishedRound.roundNumber}}
+        {{/if}}
+        Waiting For Next Round to Start
+    {{/if}}
+    {{#if isRoundRunning}}
+        <div class="row">
+            <div class="col">
+                <h2>Playing Round #{{currentRound.roundNumber}} {{currentRound.timeRemaining}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <span class="h4">Eye</span>
+            </div>
+            <div class="col">
+            <label class="custom-control custom-checkbox scoring">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+            </label>
+            <label class="custom-control custom-checkbox scoring">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+            </label>
+            <label class="custom-control custom-checkbox scoring">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+            </label>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-2">
+                    <span class="h4">20</span>
+                </div>
+                <div class="col">
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-2">
+                    <span class="h4">19</span>
+                </div>
+                <div class="col">
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-2">
+                    <span class="h4">18</span>
+                </div>
+                <div class="col">
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="custom-control custom-checkbox scoring">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                </label>
+            </div>
+        </div>
+    {{/if}}
+    </div>
+</template>

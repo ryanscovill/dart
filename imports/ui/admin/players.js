@@ -4,9 +4,14 @@ import { Players } from '../../api/player';
 import './player.js'
 import './players.html'
 
+Template.adminPlayers.onCreated(() => Meteor.subscribe('players'));
+
 Template.adminPlayers.helpers({
     players() {
-        return Players.find({}, { sort: { createdAt: -1 } });
+        return Players.find({}, { sort: { createdAt: 1 } });
+    },
+    playerCount() {
+        return Players.find({type: 'player'}).count()
     }
 });
 Template.adminPlayers.events({
@@ -14,14 +19,13 @@ Template.adminPlayers.events({
         event.preventDefault();
 
         const target = event.target;
+        Meteor.call('players.insert', target.firstName.value, target.lastName.value,  target.type.value);
 
-        Players.insert({
-            first_name: target.first_name.value,
-            last_name: target.last_name.value,
-            type: target.type.value,
-            createdAt: new Date(),
-        });
-        target.first_name.value = '';
-        target.last_name.value = '';
+        target.firstName.value = '';
+        target.lastName.value = '';
+        window.scrollTo(0,document.body.scrollHeight);
+    },
+    'click .create-teams'() {
+        Meteor.call('teams.create');
     }
 });

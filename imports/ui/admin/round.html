@@ -1,0 +1,10 @@
+<template name="round">
+    <td>{{roundNumber}}</td>
+    <td>{{status}}</td>
+    <td>{{time}}</td>
+    <td>{{timeRemainingFormatted}}</td>
+    <td>
+        {{#if canStartRound}}<button type="button" class="btn btn-primary start-round">Start Round</button>{{/if}}
+        {{#if canEndRound}}<button type="button" class="btn btn-primary end-round">End Round</button>{{/if}}
+    </td>
+</template>

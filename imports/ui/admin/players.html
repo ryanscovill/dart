@@ -1,40 +1,51 @@
 <template name="adminPlayers">
-    <div class="row">
-        <form class="col s12 new-player">
-            <div class="card-panel">
-                <div class="row">
-                    <div class="input-field col s3">
-                        <input id="first_name" name="first_name" type="text" class="validate">
-                        <label for="first_name">First Name</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id="last_name" name="last_name" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <select name="type">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="player">Player</option>
-                            <option value="spectator">Spectator</option>
-                            <option value="painter">Painter</option>
-                        </select>
-                    </div>
-                    <div class="input-field col s3">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-                    </div>
-                </div>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col">
+                # Players: {{playerCount}}
+                <button class="create-teams btn btn-primary">Create Teams</button>
             </div>
-        </form>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each player in players}}
+                    <tr>
+                        <td>{{player.firstName}}</td>
+                        <td>{{player.lastName}}</td>
+                        <td>{{player.type}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <form class="new-player form-row">
+                <div class="col">
+                    <input class="form-control" name="firstName" placeholder="First Name" type="text">
+                </div>
+                <div class="col">
+                    <input class="form-control" name="lastName" placeholder="Last Name" type="text">
+                </div>
+                <div class="col">
+                    <select name="type" class="custom-select">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="player">Player</option>
+                        <option value="spectator">Spectator</option>
+                        <option value="painter">Painter</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn" type="submit" name="action">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <ul class="collection">
-        {{#each players}}
-            <li class="collection-item">{{> player}}</li>
-        {{/each}}
-    </ul>
-<script>
-    $(document).ready(function() {
-    $('select').material_select();
-    });
-</script>
-
 </template>
